@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Upwork Job Matcher",
+  "description": "Highlights Upwork jobs that may match your freelancer profile.",
+  "version": "0.1.1",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.upwork.com/nx/search/jobs/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.upwork.com/nx/search/jobs/*"
+      ],
+      "js": [
+        "src/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Upwork Job Matcher",
+    "default_popup": "src/popup.html"
+  }
+}
